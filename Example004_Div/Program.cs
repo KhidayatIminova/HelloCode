@@ -5,7 +5,8 @@
 //Console.Write ("A+B= ");
 //Console.WriteLine (numberA + numberB);
 
-double numberA = 12;
+double numberA = new Random().Next(1,10);
+Console.WriteLine(numberA);
 double numberB = 5;
 double result = numberA / numberB;
 Console.WriteLine(result);
