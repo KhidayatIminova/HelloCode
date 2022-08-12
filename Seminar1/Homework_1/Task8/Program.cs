@@ -3,7 +3,7 @@
 
 Console.Clear ();
 
-Console.Write ("Введите число (N > 1): ");
+Console.Write ("Введите целое число (N > 1): ");
 int N = int.Parse(Console.ReadLine ()); 
 
 if (N <= 1)
