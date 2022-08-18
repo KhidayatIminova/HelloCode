@@ -4,27 +4,27 @@
 
 Console.Clear ();
 
-Console.WriteLine("Введите Х1: ");
+Console.Write("Введите Х1: ");
 
 int x1 = int.Parse(Console.ReadLine());
 
-Console.WriteLine("Введите Y1: ");
+Console.Write("Введите Y1: ");
 
 int y1 = int.Parse(Console.ReadLine());
 
-Console.WriteLine("Введите Z1: ");
+Console.Write("Введите Z1: ");
 
 int z1 = int.Parse(Console.ReadLine());
 
-Console.WriteLine("Введите Х2: ");
+Console.Write("Введите Х2: ");
 
 int x2 = int.Parse(Console.ReadLine());
 
-Console.WriteLine("Введите Y2: ");
+Console.Write("Введите Y2: ");
 
 int y2 = int.Parse(Console.ReadLine());
 
-Console.WriteLine("Введите Z2: ");
+Console.Write("Введите Z2: ");
 
 int z2 = int.Parse(Console.ReadLine());
 
