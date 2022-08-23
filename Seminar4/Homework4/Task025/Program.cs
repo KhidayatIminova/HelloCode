@@ -6,27 +6,27 @@ int a = int.Parse(Console.ReadLine());
 Console.Write("Введите число B: ");
 int b = int.Parse(Console.ReadLine());
 
-GetPow1(a);
-GetPow2(a);
+GetPow1(a, b);
+GetPow2(a, b);
 
 // 1. Метод с использованием цикла
 
-double GetPow1(double ex) // Метод, который возвращает перемножение (деление) числа самого на себя (b) раз 
+double GetPow1(double bas, double ex) // Метод, который возвращает перемножение (деление) числа самого на себя (b) раз 
 {
     double result = 1;
 
-    if (b != 0)
+    if (ex != 0)
 
     {
-        for (int i = 1; i <= Math.Abs(b); i++)
+        for (int i = 1; i <= Math.Abs(ex); i++)
         {
-            if (b > 0)
+            if (ex > 0)
             {
-                result = result * ex; // целая положительная степень (натуральная)
+                result = result * bas; // целая положительная степень (натуральная)
             }
             else 
             {
-                result = result / ex; // целая отрицательная степень
+                result = result / bas; // целая отрицательная степень
             }
         }
     }
@@ -41,9 +41,9 @@ double GetPow1(double ex) // Метод, который возвращает п�
 
 // 2. Метод без использования цикла
 
-void GetPow2(double ex)
+void GetPow2(double bas, double ex)
 {
-    double result2 = Convert.ToDouble(Math.Pow(ex, b));
-    Console.WriteLine($"\nМетод возведения числа в степень через Math.Pow: \n({ex})^({b}) = {result2} ");
+    double result2 = Convert.ToDouble(Math.Pow(bas, ex));
+    Console.WriteLine($"\nМетод возведения числа в степень через Math.Pow: \n({bas})^({ex}) = {result2} ");
 }
 
