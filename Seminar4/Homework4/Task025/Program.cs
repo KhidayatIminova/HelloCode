@@ -6,31 +6,44 @@ int a = int.Parse(Console.ReadLine());
 Console.Write("Введите число B: ");
 int b = int.Parse(Console.ReadLine());
 
-// 1. Цикл For
+GetPow1(a);
+GetPow2(a);
 
-double c = a;
+// 1. Метод с использованием цикла
 
-if (b != 0)
-
+double GetPow1(double ex) // Метод, который возвращает перемножение (деление) числа самого на себя (b) раз 
 {
-    for (int i = 1; i < Math.Abs(b); i++)
+    double result = 1;
+
+    if (b != 0)
+
     {
-        if (b > 0)
+        for (int i = 1; i <= Math.Abs(b); i++)
         {
-            c = c * a; // целая положительная степень (натуральная)
-        }
-        else 
-        {
-            c = c / a; // целая отрицательная степень
+            if (b > 0)
+            {
+                result = result * ex; // целая положительная степень (натуральная)
+            }
+            else 
+            {
+                result = result / ex; // целая отрицательная степень
+            }
         }
     }
+
+    else result = 1; // нулевая степень
+    
+    Console.WriteLine($"\nМетод возведения целого числа в натуральную степень с использованием цикла: \n({a})^({b}) = {result} ");
+
+    return result;
+
 }
 
-else c = 1; // нулевая степень
+// 2. Метод без использования цикла
 
+void GetPow2(double ex)
+{
+    double result2 = Convert.ToDouble(Math.Pow(ex, b));
+    Console.WriteLine($"\nМетод возведения числа в степень через Math.Pow: \n({ex})^({b}) = {result2} ");
+}
 
-// 2. Без цикла
-
-// double c = Convert.ToDouble(Math.Pow(a, b));
-
-Console.WriteLine($"({a})^({b}) = {c} ");
