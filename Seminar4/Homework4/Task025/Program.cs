@@ -6,10 +6,9 @@ int a = int.Parse(Console.ReadLine());
 Console.Write("Введите число B: ");
 int b = int.Parse(Console.ReadLine());
 
-GetPow1(a, b);
-GetPow2(a, b);
-
 // 1. Метод с использованием цикла
+
+GetPow1(a, b);
 
 double GetPow1(double bas, double ex) // Метод, который возвращает перемножение (деление) числа самого на себя (b) раз 
 {
@@ -40,6 +39,8 @@ double GetPow1(double bas, double ex) // Метод, который возвра
 }
 
 // 2. Метод без использования цикла
+
+GetPow2(a, b);
 
 void GetPow2(double bas, double ex)
 {
