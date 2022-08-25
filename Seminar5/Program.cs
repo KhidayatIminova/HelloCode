@@ -191,27 +191,27 @@ Console. Clear();
 // }
 // Задача 33. Задать массив. Написать программу, которая определяет, присутствует ли заданное число в массиве. 
 
-int [] array = GetArray(12, -9, +9);
+// int [] array = GetArray(12, -9, +9);
 
-Console.WriteLine(String.Join(" ,", array));
+// Console.WriteLine(String.Join(" ,", array));
 
-Console.WriteLine("Введите число: ");
-int k = int.Parse(Console.ReadLine());
+// Console.WriteLine("Введите число: ");
+// int k = int.Parse(Console.ReadLine());
 
-Console.WriteLine($"Число {k} найдено ? : {FindElement(k, array)}");
+// Console.WriteLine($"Число {k} найдено ? : {FindElement(k, array)}");
 
-// // 1. Метод, который возвращает массив, заполненный случайными числами из заданного промежутка
+// // // 1. Метод, который возвращает массив, заполненный случайными числами из заданного промежутка
 
-int [] GetArray(int count, int minValue, int maxValue)
-{
-    int [] array = new int [count];
+// int [] GetArray(int count, int minValue, int maxValue)
+// {
+//     int [] array = new int [count];
 
-    for (int i = 0; i < count; i++)
-    {
-        array[i] = new Random().Next(minValue, maxValue + 1);
-    }
-    return array;
-}
+//     for (int i = 0; i < count; i++)
+//     {
+//         array[i] = new Random().Next(minValue, maxValue + 1);
+//     }
+//     return array;
+// }
 
 // // 1.1. Функция, которая возвращает логическое значение (bool) "истина" или "ложь"
 
