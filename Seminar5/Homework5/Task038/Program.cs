@@ -4,32 +4,22 @@
 
 Console.Clear();
 
-int a = 5;
+int size = 5;
 int b = 0;
 int c = 99;
 
-//double [] array = new double [a];
-
-double [] array = GetArray(a, b, c);
+double [] array = GetArray(size, b, c);
 
 double max = FindMaxElement(array, b);
 double min = FindMinElement(array, c);
 
+Console.WriteLine($"[{string.Join(" | ", array)}]");
+Console.WriteLine($"\nМинимальный элемент  = {FindMinElement(array, c)}");
+Console.WriteLine($"Максимальный элемент = {FindMaxElement(array, b)}");
+Console.WriteLine($"\ni (max) - i (min) = {max} - {min} = {(max - min):f2}");
+Console.WriteLine();
 
-Console.WriteLine($"[{string.Join(" ,", array)}]");
-Console.WriteLine($"i (max) - i (min) = {max} - {min} = {max - min}");
-
-
-//double FindMax(int i, )
-
-// int [] array = GetArray(12, -9, +9);
-
-// Console.WriteLine(String.Join(" ,", array));
-// Console.WriteLine($"Сумма положительных чисел {GetPositiveSumm(array)}");
-Console.WriteLine($"Максимальный элемент {FindMaxElement(array, b)}");
-Console.WriteLine($"Минимальный элемент {FindMinElement(array, c)}");
-
-// 1. Метод, который возвращает массив, заполненный случайными числами из заданного промежутка
+// 1. Метод, который возвращает массив, заполненный случайными вещественными числами из заданного промежутка
 
 double [] GetArray(int count, int minValue, int maxValue)
 {
@@ -37,7 +27,8 @@ double [] GetArray(int count, int minValue, int maxValue)
 
      for (int i = 0; i < count; i++)
      {
-         array[i] = new Random().Next(minValue, maxValue + 1);
+         array[i] = new Random().Next(minValue, maxValue) + (new Random().NextDouble());
+         array[i] = Math.Round(array[i], 2);   // округляем до 2-х знаков после запятой
      }
      return array;
 }
@@ -64,7 +55,7 @@ double FindMaxElement(double [] arr, double minValue)
 double FindMinElement(double [] arr, double maxValue)
 
 {
-    double min = maxValue;   //   привязка к мнимальному значению диапазона
+    double min = maxValue;   //   привязка к максимальному значению диапазона
 
     for (int i = 0; i < arr.Length; i++)
     {
