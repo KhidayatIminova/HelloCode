@@ -9,84 +9,91 @@
 
 Console.Clear();
 
-int m = 3;
-int n = 4;
-
-int [,] array = new int [3, 4];
-
-int a = 1;
-int b = 10;
-
-FillArray(array, a, b);
-PrintArray(array);
+Console.Write("Введите количество строк массива: ");
+int m = int.Parse(Console.ReadLine());
+Console.Write("Введите количество столбцов массива: ");
+int n = int.Parse(Console.ReadLine());
 Console.WriteLine();
-GetSumTable(array);
+
+int[,] array = new int[m, n];  
+
+FillArray(array, 1, 10);           
+
+PrintArray(array);               
+
+GetColumnSum(array);             
+
+GetColumnAverage(array);         
 Console.WriteLine();
-GetAverageTable(array);
 
+// 1. Метод заполнения массива случайными целыми числами
 
-void FillArray(int [,] arr, int minValue, int maxValue)
+void FillArray(int[,] arr, int minValue, int maxValue)
 {
-   
+
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
             arr[i, j] = new Random().Next(minValue, maxValue);
-            
+
         }
     }
 }
 
-void PrintArray(int [,] arr)
+// 2. Метод вывода массива на экран
+
+void PrintArray(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
-            Console.Write($"  {arr[i,j]} | ");
+            Console.Write($"  {arr[i, j]} | ");
         }
         Console.WriteLine();
     }
 }
 
-void GetAverageTable (int [,] arr)
+// 3. Метод расчета и вывода на экран среднего арифметического элементов каждого столбца
+
+void GetColumnAverage(int[,] arr)
 {
-    Console.WriteLine ($"\nСреднее арифметическое чисел столбцов массива:");
-    Console.WriteLine();
+    Console.WriteLine($"\nСреднее арифметическое чисел столбцов массива:\n");
 
     for (int j = 0; j < arr.GetLength(1); j++)
+    {
+        double ColumnSum = 0;
+        double ColumnAverage = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
         {
-            double SumTable = 0;
-            double AverageTable = 0;
-            for (int i = 0; i < arr.GetLength(0); i++)
-            {
-                SumTable += arr[i,j];
-                AverageTable = SumTable/3;
-            }
-           
-            Console.Write ($"{(AverageTable):f2}  ");
-
+            ColumnSum += arr[i, j];
+            ColumnAverage = ColumnSum / arr.GetLength(0);
         }
-    
+
+        Console.Write($"{(ColumnAverage):f2}  ");
+
+    }
+    Console.WriteLine();
 }
 
-void GetSumTable (int [,] arr)
+// 4. Метод расчета и вывода на экран суммы элементов каждого столбца (для визуализации)
+
+void GetColumnSum(int[,] arr)
 {
-    Console.WriteLine ($"Сумма чисел столбцов массива:");
-    Console.WriteLine();
+    Console.WriteLine($"\nСумма чисел столбцов массива:\n");
 
     for (int j = 0; j < arr.GetLength(1); j++)
+    {
+        double ColumnSum = 0;
+        for (int i = 0; i < arr.GetLength(0); i++)
         {
-            double SumTable = 0;
-            for (int i = 0; i < arr.GetLength(0); i++)
-            {
-                SumTable += arr[i,j];
-                
-            }
-            
-            Console.Write ($" {SumTable}   ");
+            ColumnSum += arr[i, j];
 
         }
-    
+
+        Console.Write($" {ColumnSum}   ");
+
+    }
+    Console.WriteLine();
 }
