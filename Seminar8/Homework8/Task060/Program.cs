@@ -15,64 +15,42 @@ Console.Write("Введите количество z: ");
 int z = int.Parse(Console.ReadLine());
 Console.WriteLine();
 
-int[,] array = GetArray(m, n, z, 1, 10);
-int [] arr = GetRowArray1(array);
-PrintArray(array);
-PrintArray1(arr);
+int[,,] array3x = GetArray(m, n, z);
+PrintArray3x(array3x);
+
 
 // 3. Метод, который возвращает трехмерный массив, заполненный неповторяющимися целыми числами
 
-int[,,] GetArray(int row, int column, int zzz, int minValue, int maxValue)
+int[,,] GetArray(int row, int column, int zet)
 {   
     int count = 10;
-    int[,,] arr = new int[row, column, zzz];
+    int[,,] arr = new int[row, column, zet];
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < column; j++)
         {
-            for (int k = 0; k < zzz)
+            for (int k = 0; k < zet; k++)
+            {
             arr[i, j, k] = count++;
+            }
         }
     }
     return arr;
 }
 
-// 4. Метод вывода масcива на экран
+// Метод вывода трёхмерного массива на экран
 
-void PrintArray(int[,] arr)
+void PrintArray3x(int[,,] arr)
 {
-    for (int i = 0; i < arr.GetLength(0); i++)
+    for (int k = 0; k < arr.GetLength(2); k++)
     {
-        for (int j = 0; j < arr.GetLength(1); j++)
+        for (int i = 0; i < arr.GetLength(0); i++)
         {
-            Console.Write($"{arr[i, j]} ");
+            for(int j = 0; j < arr.GetLength(1); j++)
+            {
+                Console.Write($"{arr[i, j, k]} ({i}, {j}, {k}) ");
+            }
+            Console.WriteLine();
         }
-        Console.WriteLine();
-    }
-}
-
-// Метод получения двумерного массива из линейного
-
-int [,] GetRowArray1(int [,,] arr)
-{
-    int [,] result = new int [arr.GetLength(0)*arr.GetLength(1), arr.GetLength(1)*arr.GetLength(2)];
-    int index = 0;
-    for (int i = 0; i < arr.GetLength(0); i++)     //  берем цифру 4 (для i = 0)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-        result[index++] = arr[i,j];    // для каждого элемента                     
-        }
-        
-    }
-    return result;
-}
-
-void PrintArray1(int [] arr)
-{
-    for (int i = 0; i < arr.Length; i++)
-    {
-        Console.Write($"  {arr[i]} | ");
-        
     }
 }
