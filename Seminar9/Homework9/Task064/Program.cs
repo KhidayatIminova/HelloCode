@@ -13,29 +13,28 @@ int n = int.Parse(Console.ReadLine());
 
 int i = 0;       // для метода с пошаговым выводом рекурсии на экран
 
-Console.WriteLine($"\nРяд чисел от {m} до {n}:   {GetNumbersRow(m,n)}\n");
+Console.WriteLine($"\nРяд чисел от {m} до {n}:   {GetNumbersRow(m, n)}\n");
 
 
 // 1. Рекурсивный метод вывода ряда чисел в промежутке от M до N
 
 string GetNumbersRow(int m, int n)
 {
-    if (m <= n) return $"{m} " + GetNumbersRow(m +1, n);
+    if (m <= n) return $"{m} " + GetNumbersRow(m + 1, n);
     else return String.Empty; // условие окончания
 }
-
 
 // // 2. С пошаговым выводом рекурсии на экран
 
 // string GetNumbersRow(int m, int n)
 // {
-//     if (m <= n) 
+//     if (m <= n)
 //     {
-//     Console.WriteLine($"Шаг рекурсии {i++} --> {m}");
-//     return $"{m} " + GetNumbersRow(m +1, n);
-    
+//         Console.WriteLine($"Шаг рекурсии {i++} --> {m}");
+//         return $"{m} " + GetNumbersRow(m + 1, n);
+
 //     }
-//     else 
+//     else
 //     {
 //         Console.WriteLine($"Шаг рекурсии {i++} --> {m} - базовый вариант.");
 //         return String.Empty; // условие окончания
