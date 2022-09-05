@@ -24,7 +24,6 @@ int[,] arrayRowSum = GetRowSum(array);
 // 2. Выводим на экран массив и суммы элементов строк
 
 PrintArrayWithSum(array, arrayRowSum);
-Console.WriteLine();
 
 // 3. Находим наименьшее значение суммы элементов строк массива
 
@@ -61,7 +60,7 @@ void GetRowMinValue(int[,] arr)
             minValIndex = i;
         }
     }
-    Console.WriteLine($"Наименьшая сумма элементов в {minValIndex}-й строке");
+    Console.WriteLine($"\nНаименьшая сумма элементов в {minValIndex}-й строке\n");
 }
 
 // 6. Метод, который возвращает массив, заполненный случайными числами

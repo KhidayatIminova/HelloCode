@@ -7,57 +7,35 @@
 
 Console.Clear();
 
-Console.Write("Введите количество строк массива: ");
-int m = int.Parse(Console.ReadLine());
-Console.Write("Введите количество столбцов массива: ");
+Console.Write("Введите размерность матрицы: ");
 int n = int.Parse(Console.ReadLine());
+
 Console.WriteLine();
 
-int[,] array = new int[m, n];  
+int[,] matrix = new int[n, n];
 
-//FillArray(array, 1, 10);           
+FillMatrix(matrix);
+PrintArray(matrix);
 
-PrintArray(array);  
+// 1. Метод спирального заполнения квадратной матрицы (по часовой стрелке)
 
-//Fill1(array);
-FillImage(array,0, 0);
-Console.WriteLine();
-PrintArray(array);  
-
-
-
-// 1. Метод заполнения массива случайными целыми числами
-
-// void FillArray(int[,] arr, int minValue, int maxValue)
-// {
-
-//     for (int i = 0; i < arr.GetLength(0); i++)
-//     {
-//         for (int j = 0; j < arr.GetLength(1); j++)
-//         {
-//             arr[i, j] = new Random().Next(minValue, maxValue);
-
-//         }
-//     }
-// }
-
-
-// Метод спирального заполнения массива (по часовой стрелке)
-
-void FillImage(int [,] arr, int row, int col) // в качестве аргумента берем позицию элемента, с которого начинаем закраску (внутри замкнутой области)
+void FillMatrix(int[,] arr)
 {
-    int count = 1;
-    if (array[row, col] == 0)       // если элемент равен нулю (не закрашен)
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    int number = 10;
+
+    if (n == 1) arr[i, j] = 99; // если размер матрицы равен 1, то спиральное заполнение не применяем
+
+    for (int n = arr.GetLength(0); n > 1; n = n - 2)    // поскольку за 1 цикл заполняются 2 строки/2 столбца, декремент n уменьшаем на 2
     {
-        array[row, col] = count++;
-        if (col < arr.GetLength(1)-1) 
-        {FillImage(arr, row, col + 1); // затем в той же строке, но вправо ->
-        array[row, col] = count++;}
-        else if (row < arr.GetLength(0)-1) FillImage(arr, row + 1, col); // затем в тоv же столбце, но вниз v
-        else if (col >= 1) FillImage(arr, row, col - 1); // затем в той же строке, но влево <-
-        else if (row >= 0) FillImage(arr, row - 1, col); // сначала поднимаемся на строчку выше ^
-        
-               
+        for (k = 0; k < n - 1; k++) matrix[i, j++] = number++;   // двигаемся вправо до n - 1
+        for (k = 0; k < n - 1; k++) matrix[i++, j] = number++;   // двигаемся вниз до n - 1
+        for (k = 0; k < n - 1; k++) matrix[i, j--] = number++;   // двигаемся влево до n - 1
+        for (k = 0; k < n - 1; k++) matrix[i--, j] = number++;   // двигаемся вверх до n - 1
+        i++;
+        j++;
     }
 }
 
@@ -75,17 +53,5 @@ void PrintArray(int[,] arr)
     }
 }
 
-// void Fill1(int [,] arr)
-// {
-//     int i = 0;
-//     int count = 1;
-//     for (i = 0; i< arr.GetLength(1); i++)
-//     {
-//         for (int j = 0; j < arr.GetLength(1);j++)
-//     {
-//         arr[0, j] = count ++;
-//         arr[i, arr.GetLength(1)-1] = count ++;
-//     }        
-//     }
-        
-// }
+
+

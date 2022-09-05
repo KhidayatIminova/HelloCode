@@ -16,29 +16,20 @@ Console.Write("Введите количество строк 2-й матриц�
 int m2 = int.Parse(Console.ReadLine());
 Console.Write("Введите количество столбцов 2-й матрицы: ");
 int n2 = int.Parse(Console.ReadLine());
-
-
-// 1. Проверка на согласованность матриц
-
 Console.WriteLine();
-if (m1 != n2) Console.WriteLine($"Матрицы несовместимы. Умножение невозможно.");
-//return;
 
+// 1. Проверка на совместимость матриц
 
-int [,] matrix1 = GetArray(m1, n1, 1, 10);
-int [,] matrix2 = GetArray(m2, n2, 1, 10);
+if (m1 != n2)
+{
+    Console.WriteLine($"Матрицы несовместимы. Умножение невозможно.\n");
+    return;
+}
 
+int[,] matrix1 = GetArray(m1, n1, 1, 10);
+int[,] matrix2 = GetArray(m2, n2, 1, 10);
 
-
-// Console.Write("Введите размерность матриц: ");
-// int m = int.Parse(Console.ReadLine());
-// Console.Write("Введите размерность матриц: ");
-// int n = int.Parse(Console.ReadLine());
-
-// int [,] matrix1 = GetArray(m, m, 1, 10);
-// int [,] matrix2 = GetArray(m, m, 1, 10);
-
-int [,] matrixMult = GetMatrixMultiply(matrix1, matrix2);
+int[,] matrixMult = GetMatrixMultiply(matrix1, matrix2);
 
 PrintArray(matrix1);
 Console.WriteLine();
@@ -47,11 +38,11 @@ PrintArray(matrix2);
 Console.WriteLine();
 PrintArray(matrixMult);
 
-// Метод перемножения матриц
+// 2. Метод перемножения матриц
 
-int [,] GetMatrixMultiply(int [,] arr1, int [,] arr2)
+int[,] GetMatrixMultiply(int[,] arr1, int[,] arr2)
 {
-    int [,] result = new int [arr1.GetLength(0), arr2.GetLength(1)];
+    int[,] result = new int[arr1.GetLength(0), arr2.GetLength(1)];
     for (int i = 0; i < arr1.GetLength(0); i++)
     {
         for (int j = 0; j < arr2.GetLength(1); j++)
@@ -59,12 +50,11 @@ int [,] GetMatrixMultiply(int [,] arr1, int [,] arr2)
             for (int k = 0; k < arr2.GetLength(0); k++)
             {
                 result[i, j] += arr1[i, k] * arr2[k, j];
-            } 
+            }
         }
     }
     return result;
 }
-
 
 // 3. Метод, который возвращает массив, заполненный случайными числами
 

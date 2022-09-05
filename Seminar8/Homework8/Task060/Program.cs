@@ -7,38 +7,38 @@
 
 Console.Clear();
 
-Console.Write("Введите количество строк: ");
-int m = int.Parse(Console.ReadLine());
-Console.Write("Введите количество столбцов: ");
-int n = int.Parse(Console.ReadLine());
-Console.Write("Введите количество z: ");
+Console.WriteLine("Параметры трёхмерного массива:\n");
+Console.Write("Введите размер 1: ");
+int x = int.Parse(Console.ReadLine());
+Console.Write("Введите размер 2: ");
+int y = int.Parse(Console.ReadLine());
+Console.Write("Введите размер 3: ");
 int z = int.Parse(Console.ReadLine());
 Console.WriteLine();
 
-int[,,] array3x = GetArray(m, n, z);
+int[,,] array3x = GetArray(x, y, z);
 PrintArray3x(array3x);
 
+// 1. Метод, который возвращает трехмерный массив, заполненный неповторяющимися целыми числами
 
-// 3. Метод, который возвращает трехмерный массив, заполненный неповторяющимися целыми числами
-
-int[,,] GetArray(int row, int column, int zet)
-{   
-    int count = 10;
-    int[,,] arr = new int[row, column, zet];
-    for (int i = 0; i < row; i++)
+int[,,] GetArray(int size1, int size2, int size3)
+{
+    int number = 10;
+    int[,,] arr = new int[size1, size2, size3];
+    for (int i = 0; i < size1; i++)
     {
-        for (int j = 0; j < column; j++)
+        for (int j = 0; j < size2; j++)
         {
-            for (int k = 0; k < zet; k++)
+            for (int k = 0; k < size3; k++)
             {
-            arr[i, j, k] = count++;
+                arr[i, j, k] = number++;
             }
         }
     }
     return arr;
 }
 
-// Метод вывода трёхмерного массива на экран
+// 2. Метод вывода трёхмерного массива на экран с указанием индекса элемента
 
 void PrintArray3x(int[,,] arr)
 {
@@ -46,7 +46,7 @@ void PrintArray3x(int[,,] arr)
     {
         for (int i = 0; i < arr.GetLength(0); i++)
         {
-            for(int j = 0; j < arr.GetLength(1); j++)
+            for (int j = 0; j < arr.GetLength(1); j++)
             {
                 Console.Write($"{arr[i, j, k]} ({i}, {j}, {k}) ");
             }

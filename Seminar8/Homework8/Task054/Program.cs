@@ -47,7 +47,7 @@ void SortArray(int[,] arr)
     }
 }
 
-// 3. Метод, который возвращает массив, заполненный случайными числами
+// 3. Метод, возвращающий массив, заполненный случайными числами
 
 int[,] GetArray(int row, int column, int minValue, int maxValue)
 {
